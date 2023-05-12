@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Progress, Button } from "antd";
+import { Table, Progress, Button, Space, Dropdown, Menu } from "antd";
 
 const Ruku = () => {
   const columns = [
@@ -37,9 +37,11 @@ const Ruku = () => {
       key: "opr",
       render: (t, r, i) => {
         return (
-          <div>
-            {r.speed === 100 ? <Button>入库</Button> : <Button>暂缓</Button>}
-          </div>
+          <Space size="middle">
+            <Dropdown overlay={menu.bind(this, r)} record={r}>
+              <a>操作</a>
+            </Dropdown>
+          </Space>
         );
       },
     },
@@ -67,6 +69,29 @@ const Ruku = () => {
       speed: 100,
     },
   ];
+
+  const handleChildActions = (row, key) => {
+    console.log("子基金操作:", row, key);
+    if (key === "adjustment") {
+      console.log("子基金调仓：");
+    } else {
+      console.log("子基金赎回：");
+    }
+  };
+
+  const menu = (record) => {
+    return (
+      <Menu onClick={handleChildActions(record)} record={record}>
+        <Menu.Item key="adjustment">
+          <span>调仓</span>
+        </Menu.Item>
+        <Menu.Item key="redemption">
+          <span>赎回</span>
+        </Menu.Item>
+      </Menu>
+    );
+  };
+
   return (
     <div>
       加工管理入库

@@ -6,4 +6,9 @@
         border: 1px solid gray ;
         padding: 16px;
     }
+    .inputSearch{
+        .ant-input-search-button {
+            display: none;
+        }
+    }
 }

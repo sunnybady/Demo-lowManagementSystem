@@ -178,6 +178,35 @@ const menus = [
       },
     ],
   },
+  {
+    key: "/test",
+    icon: <UploadOutlined />,
+    label: "测试模块",
+    title: "测试模块",
+    children: [
+      {
+        key: "/test/1",
+        icon: <UploadOutlined />,
+        label: "test1",
+        title: "test2",
+        component: React.lazy(() => import("../views/test/Test1")),
+      },
+      {
+        key: "/test/2",
+        icon: <UploadOutlined />,
+        label: "test2",
+        title: "test2",
+        component: React.lazy(() => import("../views/test/Test2")),
+      },
+      {
+        key: "/test/3",
+        icon: <UploadOutlined />,
+        label: "test3",
+        title: "test3",
+        component: React.lazy(() => import("../views/test/Test3")),
+      },
+    ],
+  },
 ];
 
 export default menus;
